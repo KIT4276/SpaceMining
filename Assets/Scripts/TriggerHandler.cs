@@ -13,6 +13,8 @@ public class TriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("OnTriggerEnter");
+        
         if (_droneStateMachine.ActiveState == DroneState.FollowingState
             && other.TryGetComponent<Resource>(out var resource)
             && resource == _drone.NearestResource)

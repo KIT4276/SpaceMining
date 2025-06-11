@@ -5,7 +5,7 @@ public class Resource : MonoBehaviour
 {
     private ResourcesFactory _resourcesFactory;
 
-    public bool IsOccupied {  get; private set; }
+   // public bool IsOccupied {  get; private set; }
 
     public void Initialize(Vector2 position, ResourcesFactory resourcesFactory)
     {
@@ -16,7 +16,7 @@ public class Resource : MonoBehaviour
         
         transform.position = new Vector3(x, 0, z);
 
-        IsOccupied = false;
+       // IsOccupied = false;
     }
 
     public void Deactivate()
@@ -24,8 +24,8 @@ public class Resource : MonoBehaviour
         _resourcesFactory.Despawn(this);
     }
 
-    public void TakeAResource()
-    {
-        IsOccupied = true;
-    }
+    //public void TakeAResource()
+    //{
+    //    IsOccupied = true;
+    //}
 }

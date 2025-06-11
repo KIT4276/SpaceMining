@@ -54,11 +54,11 @@ public class Drone : MonoBehaviour
     {
         foreach (var res in _resourcesFactory.ActiveResourcesPool) // change to for
         {
-            if (!res.IsOccupied && res != NearestResource)
+            if (/*!res.IsOccupied &&*/ res != NearestResource)
             {
                 if (NearestResource == null)
                 {
-                    NearestResource.TakeAResource();
+                    //res.TakeAResource();
                     NearestResource = res;
                 }
                 else
