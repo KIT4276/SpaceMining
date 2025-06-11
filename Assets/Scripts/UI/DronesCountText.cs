@@ -1,0 +1,20 @@
+using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class DronesCountText : MonoBehaviour
+{
+    [SerializeField] private TMP_Text _text;
+    [SerializeField] private DronesCount _dronesCount;
+
+    private void Awake()
+    {
+        _dronesCount.ChangeCount += OnChangeCount;
+    }
+
+    public void OnChangeCount(float count)
+    {
+        _text.text = count.ToString();
+    }
+}

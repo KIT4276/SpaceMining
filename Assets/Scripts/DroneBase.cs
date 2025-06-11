@@ -1,16 +1,28 @@
+using System;
 using UnityEngine;
 
 public class DroneBase : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private DronesCount _dronesCount;
+    [SerializeField] private Drone[] _drones;
+
+    private void Awake()
     {
-        
+        _dronesCount.ChangeCount += OnChangeCount;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnChangeCount(float count)
     {
-        
+        for(int i = 0;  i < _drones.Length; i++)
+        {
+            if (i < count)
+            {
+                _drones[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                _drones[i].gameObject.SetActive(false);
+            }
+        }
     }
 }
