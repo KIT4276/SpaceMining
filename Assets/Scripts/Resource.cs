@@ -1,9 +1,31 @@
+using System;
 using UnityEngine;
 
 public class Resource : MonoBehaviour
 {
-    public void Initialize(Vector2 position)
+    private ResourcesFactory _resourcesFactory;
+
+    public bool IsOccupied {  get; private set; }
+
+    public void Initialize(Vector2 position, ResourcesFactory resourcesFactory)
     {
-        transform.position = position;
+        _resourcesFactory = resourcesFactory;
+
+         var x = position.x;
+        var z = position.y;
+        
+        transform.position = new Vector3(x, 0, z);
+
+        IsOccupied = false;
+    }
+
+    public void Deactivate()
+    {
+        _resourcesFactory.Despawn(this);
+    }
+
+    public void TakeAResource()
+    {
+        IsOccupied = true;
     }
 }

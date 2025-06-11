@@ -6,16 +6,18 @@ using UnityEngine;
 public class ResourcesFactory : MonoBehaviour
 {
     [SerializeField] private float _spawnTime = 3;
-    [SerializeField] private Vector2 _x_Limits;
-    [SerializeField] private Vector2 _y_Limits;
+    [SerializeField] private Vector2 _x_Limits = new Vector2(-5, 5);
+    [SerializeField] private Vector2 _z_Limits = new Vector2(-5, 5);
 
-    private List<Resource> InactiveResourcesPool = new();
-    private List<Resource> ActiveResourcesPool = new();
+    public List<Resource> InactiveResourcesPool { get; private set; }
+    public List<Resource> ActiveResourcesPool { get; private set; }
 
     public event Action<Resource> Spawned;
 
     private void Start()
     {
+        InactiveResourcesPool = new();
+        ActiveResourcesPool = new();
         StartCoroutine(SpawnResourcesRoutine());
     }
 
@@ -42,7 +44,7 @@ public class ResourcesFactory : MonoBehaviour
             resource = InactiveResourcesPool[0];
             InactiveResourcesPool.Remove(resource);
         }
-        resource.Initialize(GetRandomPosition());
+        resource.Initialize(GetRandomPosition(), this);
         resource.gameObject.SetActive(true);
         ActiveResourcesPool.Add(resource);
 
@@ -52,7 +54,7 @@ public class ResourcesFactory : MonoBehaviour
     private Vector2 GetRandomPosition()
     {
         float x = UnityEngine.Random.Range(_x_Limits.x, _x_Limits.y);
-        float y = UnityEngine.Random.Range(_y_Limits.x, _y_Limits.y);
+        float y = UnityEngine.Random.Range(_z_Limits.x, _z_Limits.y);
 
         return new Vector2(x, y);
     }
@@ -60,5 +62,13 @@ public class ResourcesFactory : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
+    }
+
+    public void Despawn(Resource resource)
+    {
+        ActiveResourcesPool.Remove(resource);
+        InactiveResourcesPool.Add(resource);
+
+        resource.gameObject.SetActive(false);
     }
 }
