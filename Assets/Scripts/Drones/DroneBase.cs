@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class DroneBase : MonoBehaviour
@@ -13,11 +12,15 @@ public class DroneBase : MonoBehaviour
 
     private void OnChangeCount(float count)
     {
-        for(int i = 0;  i < _drones.Length; i++)
+        for (int i = 0; i < _drones.Length; i++)
         {
             if (i < count)
             {
                 _drones[i].gameObject.SetActive(true);
+                if (_drones[i].DroneStateMachine.ActiveState != DroneState.StartState)
+                {
+                    _drones[i].FindNewDestination();
+                }
             }
             else
             {

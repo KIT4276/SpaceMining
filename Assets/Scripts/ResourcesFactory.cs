@@ -14,11 +14,26 @@ public class ResourcesFactory : MonoBehaviour
 
     public event Action<Resource> Spawned;
 
+    private const string Path = "Prefabs/Resource";
+
     private void Start()
     {
         InactiveResourcesPool = new();
         ActiveResourcesPool = new();
         StartCoroutine(SpawnResourcesRoutine());
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    public void Despawn(Resource resource)
+    {
+        ActiveResourcesPool.Remove(resource);
+        InactiveResourcesPool.Add(resource);
+
+        resource.gameObject.SetActive(false);
     }
 
     private IEnumerator SpawnResourcesRoutine()
@@ -36,7 +51,7 @@ public class ResourcesFactory : MonoBehaviour
 
         if (InactiveResourcesPool.Count == 0)
         {
-            GameObject obj = Instantiate(UnityEngine.Resources.Load("Prefabs/Resource")) as GameObject;
+            GameObject obj = Instantiate(UnityEngine.Resources.Load(Path)) as GameObject;
             resource = obj.GetComponent<Resource>();
         }
         else
@@ -57,18 +72,5 @@ public class ResourcesFactory : MonoBehaviour
         float y = UnityEngine.Random.Range(_z_Limits.x, _z_Limits.y);
 
         return new Vector2(x, y);
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-    }
-
-    public void Despawn(Resource resource)
-    {
-        ActiveResourcesPool.Remove(resource);
-        InactiveResourcesPool.Add(resource);
-
-        resource.gameObject.SetActive(false);
     }
 }

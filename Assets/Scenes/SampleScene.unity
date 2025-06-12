@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0dcf2123770914d8d843f26eff385a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startCount: 3
+  _startCount: 5
   _slider: {fileID: 1779185221}
 --- !u!4 &421692358
 Transform:
@@ -2380,6 +2380,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3217723205978895863, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3217723205978895863, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
       propertyPath: avoidancePriority
       value: 50

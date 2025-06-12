@@ -11,7 +11,6 @@ public class DroneStateMachine : MonoBehaviour
     {
         ActiveState = followingState;
         StateChanged?.Invoke(ActiveState);
-        //Debug.Log(ActiveState);
     }
 
     private void Start()
