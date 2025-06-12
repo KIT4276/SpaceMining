@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DroneBase : MonoBehaviour
+public class DronesBase : MonoBehaviour
 {
     [SerializeField] private DronesCount _dronesCount;
     [SerializeField] private DroneInstaller[] _drones;

@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 6837071683429791454}
   - component: {fileID: 2723126452313074417}
   - component: {fileID: 4609304062184320666}
+  - component: {fileID: 6740418951858594773}
   m_Layer: 0
   m_Name: RedDrone
   m_TagString: Untagged
@@ -332,3 +333,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _miningTime: 2
   _unloadingTime: 2
+--- !u!114 &6740418951858594773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528863857849198649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3afcf615fb70ff041bbfbc1bd1c42a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderers:
+  - {fileID: 7739480242113706695}
+  - {fileID: 4527940099748146361}
+  _normMaterial: {fileID: 2100000, guid: 5bf59d83b2d8a7a45857ae891ae04bf4, type: 2}
+  _selectedMaterial: {fileID: 2100000, guid: 51f4f0f6d4e0a834dab92f5a99383d27, type: 2}

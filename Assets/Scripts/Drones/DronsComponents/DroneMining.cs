@@ -8,14 +8,14 @@ public class DroneMining : MonoBehaviour
 
     private DroneStateMachine _droneStateMachine;
     private DroneMovement _droneMovement;
-    private DroneBase _thisDroneBase;
+    private DronesBase _thisDroneBase;
 
     private Resource _resource;
 
     private Coroutine _miningCoroutine;
     private Coroutine _unloadingCoroutine;
 
-    public void Initialize(DroneStateMachine droneStateMachine, DroneMovement droneMovement, DroneBase droneBase)
+    public void Initialize(DroneStateMachine droneStateMachine, DroneMovement droneMovement, DronesBase droneBase)
     {
         _droneStateMachine = droneStateMachine;
         _droneMovement = droneMovement;
@@ -37,7 +37,7 @@ public class DroneMining : MonoBehaviour
                 }
                 break;
             case DroneState.ReturnState:
-                if (other.TryGetComponent<DroneBase>(out var droneBase) && droneBase == _thisDroneBase)
+                if (other.TryGetComponent<DronesBase>(out var droneBase) && droneBase == _thisDroneBase)
                 {
                     _droneStateMachine.ChangeState(DroneState.UnloadingState);
                 }

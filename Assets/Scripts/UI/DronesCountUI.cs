@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class DronesCountText : MonoBehaviour
+public class DronesCountUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     [SerializeField] private DronesCount _dronesCount;

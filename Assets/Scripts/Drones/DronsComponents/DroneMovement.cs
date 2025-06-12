@@ -5,13 +5,13 @@ using UnityEngine.AI;
 public class DroneMovement : MonoBehaviour
 {
    private NavMeshAgent _navMeshAgent;
-   private DroneBase _base;
+   private DronesBase _base;
    private DroneStateMachine _droneStateMachine;
   private ResourcesFactory _resourcesFactory;
 
     public Resource NearestResource { get; private set; }
 
-    public void Initialize(NavMeshAgent navMeshAgent, DroneBase droneBase, DroneStateMachine droneStateMachine, 
+    public void Initialize(NavMeshAgent navMeshAgent, DronesBase droneBase, DroneStateMachine droneStateMachine, 
         ResourcesFactory resourcesFactory)
     {
         _navMeshAgent = navMeshAgent;

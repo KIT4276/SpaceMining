@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class DroneInstaller : MonoBehaviour
 {
     [SerializeField] private ResourcesFactory _resourcesFactory;
-    [SerializeField] private DroneBase _droneBase;
+    [SerializeField] private DronesBase _droneBase;
 
     public DroneMovement DroneMovement { get; private set; }
     public DroneMining DroneMining { get; private set; }
@@ -14,7 +14,7 @@ public class DroneInstaller : MonoBehaviour
     public NavMeshAgent NavMeshAgent { get; private set; }
 
     public ResourcesFactory ResourcesFactory { get => _resourcesFactory; }
-    public DroneBase DroneBase { get => _droneBase; }
+    public DronesBase DroneBase { get => _droneBase; }
 
     private void Awake()
     {
