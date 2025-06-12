@@ -15,4 +15,9 @@ public class DronesCountText : MonoBehaviour
     {
         _text.text = count.ToString();
     }
+
+    private void OnDestroy()
+    {
+        _dronesCount.ChangeCount -= OnChangeCount;
+    }
 }

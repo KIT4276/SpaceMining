@@ -473,6 +473,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 136941048}
     - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
+      propertyPath: _droneBase
+      value: 
+      objectReference: {fileID: 136941048}
+    - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
       propertyPath: _resourcesFactory
       value: 
       objectReference: {fileID: 261468549}
@@ -1070,6 +1074,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 136941048}
     - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
+      propertyPath: _droneBase
+      value: 
+      objectReference: {fileID: 136941048}
+    - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
       propertyPath: _resourcesFactory
       value: 
       objectReference: {fileID: 261468549}
@@ -1475,6 +1483,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 136941048}
     - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
+      propertyPath: _droneBase
+      value: 
+      objectReference: {fileID: 136941048}
+    - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
       propertyPath: _resourcesFactory
       value: 
       objectReference: {fileID: 261468549}
@@ -1785,6 +1797,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 136941048}
     - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
+      propertyPath: _droneBase
+      value: 
+      objectReference: {fileID: 136941048}
+    - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
       propertyPath: _resourcesFactory
       value: 
       objectReference: {fileID: 261468549}
@@ -1945,6 +1961,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
       propertyPath: _base
+      value: 
+      objectReference: {fileID: 721228244}
+    - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
+      propertyPath: _droneBase
       value: 
       objectReference: {fileID: 721228244}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
@@ -2120,6 +2140,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 721228244}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
+      propertyPath: _droneBase
+      value: 
+      objectReference: {fileID: 721228244}
+    - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
       propertyPath: _resourcesFactory
       value: 
       objectReference: {fileID: 261468549}
@@ -2186,6 +2210,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
       propertyPath: _base
+      value: 
+      objectReference: {fileID: 721228244}
+    - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
+      propertyPath: _droneBase
       value: 
       objectReference: {fileID: 721228244}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
@@ -2269,6 +2297,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 721228244}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
+      propertyPath: _droneBase
+      value: 
+      objectReference: {fileID: 721228244}
+    - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
       propertyPath: _resourcesFactory
       value: 
       objectReference: {fileID: 261468549}
@@ -2335,6 +2367,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
       propertyPath: _base
+      value: 
+      objectReference: {fileID: 721228244}
+    - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
+      propertyPath: _droneBase
       value: 
       objectReference: {fileID: 721228244}
     - target: {fileID: 774646023532004818, guid: c245448503319c34ea15e1a403df8a9c, type: 3}
@@ -2434,6 +2470,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
       propertyPath: _base
+      value: 
+      objectReference: {fileID: 136941048}
+    - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}
+      propertyPath: _droneBase
       value: 
       objectReference: {fileID: 136941048}
     - target: {fileID: 9073386174939929147, guid: b77fed1f1c1d24b42a28a3450dd39b51, type: 3}

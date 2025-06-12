@@ -1,21 +1,20 @@
 using System;
-using UnityEngine;
 
-public class DroneStateMachine : MonoBehaviour
+public class DroneStateMachine 
 {
     public DroneState ActiveState { get; private set; }
 
     public event Action<DroneState> StateChanged;
 
+    public DroneStateMachine()
+    {
+        ActiveState =  DroneState.StartState;
+    }
+
     public void ChangeState(DroneState followingState)
     {
         ActiveState = followingState;
         StateChanged?.Invoke(ActiveState);
-    }
-
-    private void Start()
-    {
-        ActiveState =  DroneState.StartState;
     }
 }
 

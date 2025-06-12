@@ -1,24 +1,26 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(DroneStateMachine), typeof(DroneMovement))]
 public class DroneMining : MonoBehaviour
 {
     [SerializeField] private float _miningTime = 2;
     [SerializeField] private float _unloadingTime = 2;
-    [SerializeField] private DroneStateMachine _droneStateMachine;
-    [SerializeField] private DroneMovement _droneMovement;
-    [SerializeField] private DroneBase _thisDroneBase;
+
+    private DroneStateMachine _droneStateMachine;
+    private DroneMovement _droneMovement;
+    private DroneBase _thisDroneBase;
 
     private Resource _resource;
 
     private Coroutine _miningCoroutine;
     private Coroutine _unloadingCoroutine;
 
-    private void Start()
+    public void Initialize(DroneStateMachine droneStateMachine, DroneMovement droneMovement, DroneBase droneBase)
     {
+        _droneStateMachine = droneStateMachine;
+        _droneMovement = droneMovement;
+        _thisDroneBase = droneBase;
+
         _droneStateMachine.StateChanged += OnStateChanged;
     }
 

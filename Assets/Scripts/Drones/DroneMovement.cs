@@ -4,15 +4,21 @@ using UnityEngine.AI;
 
 public class DroneMovement : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent _agent;
-    [SerializeField] private DroneBase _base;
-    [SerializeField] private DroneStateMachine _droneStateMachine;
-    [SerializeField] private ResourcesFactory _resourcesFactory;
+   private NavMeshAgent _navMeshAgent;
+   private DroneBase _base;
+   private DroneStateMachine _droneStateMachine;
+  private ResourcesFactory _resourcesFactory;
 
     public Resource NearestResource { get; private set; }
 
-    private void Start()
+    public void Initialize(NavMeshAgent navMeshAgent, DroneBase droneBase, DroneStateMachine droneStateMachine, 
+        ResourcesFactory resourcesFactory)
     {
+        _navMeshAgent = navMeshAgent;
+        _base = droneBase;
+        _droneStateMachine = droneStateMachine;
+        _resourcesFactory = resourcesFactory;
+
         _resourcesFactory.Spawned += OnResourcesSpawned;
         _droneStateMachine.StateChanged += OnStateChanged;
     }
@@ -32,7 +38,7 @@ public class DroneMovement : MonoBehaviour
 
     public void StopMove()
     {
-        _agent.ResetPath();
+        _navMeshAgent.ResetPath();
     }
 
     private void OnResourcesSpawned(Resource resource)
@@ -47,7 +53,7 @@ public class DroneMovement : MonoBehaviour
         {
             SelectNearest(resource);
         }
-        _agent.SetDestination(NearestResource.transform.position);
+        _navMeshAgent.SetDestination(NearestResource.transform.position);
         _droneStateMachine.ChangeState(DroneState.FollowingState);
     }
 
@@ -56,7 +62,7 @@ public class DroneMovement : MonoBehaviour
         switch (state)
         {
             case DroneState.ReturnState:
-                _agent.SetDestination(_base.transform.position);
+                _navMeshAgent.SetDestination(_base.transform.position);
                 break;
             case DroneState.FollowingState:
                 FindNewDestination();
@@ -83,7 +89,7 @@ public class DroneMovement : MonoBehaviour
                 }
             }
         }
-        _agent.SetDestination(NearestResource.transform.position);
+        _navMeshAgent.SetDestination(NearestResource.transform.position);
     }
 
     private void SelectNearest(Resource resource)

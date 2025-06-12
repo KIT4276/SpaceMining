@@ -183,11 +183,11 @@ GameObject:
   - component: {fileID: 6214470862659496065}
   - component: {fileID: 6680902601318354699}
   - component: {fileID: 9073386174939929147}
-  - component: {fileID: 6719779305979741977}
-  - component: {fileID: 2385594010567540422}
   - component: {fileID: 3217723205978895863}
   - component: {fileID: 6822733405632182719}
   - component: {fileID: 6837071683429791454}
+  - component: {fileID: 2723126452313074417}
+  - component: {fileID: 4609304062184320666}
   m_Layer: 0
   m_Name: RedDrone
   m_TagString: Untagged
@@ -233,36 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourcesFactory: {fileID: 0}
-  _base: {fileID: 0}
-  _agent: {fileID: 3217723205978895863}
-  _droneStateMachine: {fileID: 2385594010567540422}
---- !u!114 &6719779305979741977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528863857849198649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd75c934955d9949911618b15d77ff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _miningTime: 2
-  _droneStateMachine: {fileID: 2385594010567540422}
-  _drone: {fileID: 9073386174939929147}
---- !u!114 &2385594010567540422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7528863857849198649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8327f293bd72c9f49a5ee9770496bb05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _droneBase: {fileID: 0}
 --- !u!195 &3217723205978895863
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -272,7 +243,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7528863857849198649}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1.2
+  m_Radius: 1.5
   m_Speed: 1.2
   m_Acceleration: 8
   avoidancePriority: 40
@@ -335,3 +306,29 @@ CapsuleCollider:
   m_Height: 1.5221388
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: -0.00000017029899}
+--- !u!114 &2723126452313074417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528863857849198649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2386776e721ca114a8dfe96c19e6cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4609304062184320666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7528863857849198649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1db8fca1295344e916a40e63723ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _miningTime: 2
+  _unloadingTime: 2

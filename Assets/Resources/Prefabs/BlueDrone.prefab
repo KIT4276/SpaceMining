@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 141527824165342960}
   - component: {fileID: 4592780213380129210}
   - component: {fileID: 774646023532004818}
-  - component: {fileID: 1874805879366921736}
-  - component: {fileID: 1509556944641176722}
   - component: {fileID: 3640104348702596392}
   - component: {fileID: 8469669209240067650}
   - component: {fileID: 1637895921998060235}
+  - component: {fileID: 7180923939575428143}
+  - component: {fileID: 2541008534544333855}
   m_Layer: 0
   m_Name: BlueDrone
   m_TagString: Untagged
@@ -61,36 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourcesFactory: {fileID: 0}
-  _base: {fileID: 0}
-  _agent: {fileID: 3640104348702596392}
-  _droneStateMachine: {fileID: 1509556944641176722}
---- !u!114 &1874805879366921736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166680005620021794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd75c934955d9949911618b15d77ff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _miningTime: 2
-  _droneStateMachine: {fileID: 1509556944641176722}
-  _drone: {fileID: 774646023532004818}
---- !u!114 &1509556944641176722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5166680005620021794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8327f293bd72c9f49a5ee9770496bb05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _droneBase: {fileID: 0}
 --- !u!195 &3640104348702596392
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -100,7 +71,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5166680005620021794}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1.2
+  m_Radius: 1.5
   m_Speed: 1.2
   m_Acceleration: 8
   avoidancePriority: 45
@@ -163,6 +134,32 @@ CapsuleCollider:
   m_Height: 1.5221388
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: -0.00000017029899}
+--- !u!114 &7180923939575428143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166680005620021794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2386776e721ca114a8dfe96c19e6cf15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2541008534544333855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166680005620021794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1db8fca1295344e916a40e63723ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _miningTime: 2
+  _unloadingTime: 2
 --- !u!1 &6310879741272787070
 GameObject:
   m_ObjectHideFlags: 0

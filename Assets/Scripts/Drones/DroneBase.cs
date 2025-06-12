@@ -3,7 +3,7 @@ using UnityEngine;
 public class DroneBase : MonoBehaviour
 {
     [SerializeField] private DronesCount _dronesCount;
-    [SerializeField] private Drone[] _drones;
+    [SerializeField] private DroneInstaller[] _drones;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class DroneBase : MonoBehaviour
                 _drones[i].gameObject.SetActive(true);
                 if (_drones[i].DroneStateMachine.ActiveState != DroneState.StartState)
                 {
-                    _drones[i].FindNewDestination();
+                    _drones[i].DroneMovement.FindNewDestination();
                 }
             }
             else
@@ -27,5 +27,10 @@ public class DroneBase : MonoBehaviour
                 _drones[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        _dronesCount.ChangeCount -= OnChangeCount;
     }
 }
