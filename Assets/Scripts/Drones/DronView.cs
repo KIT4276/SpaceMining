@@ -8,23 +8,24 @@ public class DronView : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Material _normMaterial;
     [SerializeField] private Material _selectedMaterial;
     
-    private bool _isSelected = false;
     private Vector3 _startScale;
+    public  bool IsSelected { get; private set; }
 
     public event Action<DronView> Click;
 
     private void Awake()
     {
+        IsSelected = false;
         _startScale = transform.localScale;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!_isSelected)
+        if (!IsSelected)
         {
-            Click?.Invoke(this);
             this.transform.localScale *= 1.2f;
-            _isSelected = true;
+            IsSelected = true;
+            Click?.Invoke(this);
             ChangeMaterial(_selectedMaterial);
         }
         else
@@ -36,7 +37,7 @@ public class DronView : MonoBehaviour, IPointerClickHandler
     public void Deactivate()
     {
         this.transform.localScale = _startScale;
-        _isSelected = false;
+        IsSelected = false;
         ChangeMaterial(_normMaterial);
     }
 

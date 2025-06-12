@@ -28,18 +28,18 @@ public class DroneMining : MonoBehaviour
     {
         switch (_droneStateMachine.ActiveState)
         {
-            case DroneState.FollowingState:
+            case DroneState.Following:
                 if (other.TryGetComponent<Resource>(out var resource) && resource == _droneMovement.NearestResource)
                 {
-                    _droneStateMachine.ChangeState(DroneState.MiningState);
+                    _droneStateMachine.ChangeState(DroneState.Mining);
                     _resource = resource;
                     _miningCoroutine = StartCoroutine(MiningRoutine());
                 }
                 break;
-            case DroneState.ReturnState:
+            case DroneState.Return:
                 if (other.TryGetComponent<DronesBase>(out var droneBase) && droneBase == _thisDroneBase)
                 {
-                    _droneStateMachine.ChangeState(DroneState.UnloadingState);
+                    _droneStateMachine.ChangeState(DroneState.Unloading);
                 }
                 break;
         }
@@ -47,15 +47,15 @@ public class DroneMining : MonoBehaviour
 
     private IEnumerator MiningRoutine()
     {
-        _droneStateMachine.ChangeState(DroneState.MiningState);
+        _droneStateMachine.ChangeState(DroneState.Mining);
         yield return new WaitForSeconds(_miningTime);
         _resource.Deactivate();
-        _droneStateMachine.ChangeState(DroneState.ReturnState);
+        _droneStateMachine.ChangeState(DroneState.Return);
     }
 
     private void OnStateChanged(DroneState state)
     {
-        if (state == DroneState.UnloadingState)
+        if (state == DroneState.Unloading)
         {
             PlayUnloadingEffects();
         }
@@ -71,7 +71,7 @@ public class DroneMining : MonoBehaviour
     {
         _droneMovement.StopMove();
         yield return new WaitForSeconds(_unloadingTime);
-        _droneStateMachine.ChangeState(DroneState.FollowingState);
+        _droneStateMachine.ChangeState(DroneState.Following);
     }
 
     private void OnDisable()

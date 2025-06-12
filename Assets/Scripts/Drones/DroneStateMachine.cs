@@ -8,7 +8,7 @@ public class DroneStateMachine
 
     public DroneStateMachine()
     {
-        ActiveState =  DroneState.StartState;
+        ActiveState =  DroneState.Start;
     }
 
     public void ChangeState(DroneState followingState)
@@ -20,9 +20,9 @@ public class DroneStateMachine
 
     public enum DroneState
     {
-        StartState,
-        FollowingState,
-        MiningState,
-        ReturnState,
-        UnloadingState,
+        Start,
+        Following,
+        Mining,
+        Return,
+        Unloading,
     }

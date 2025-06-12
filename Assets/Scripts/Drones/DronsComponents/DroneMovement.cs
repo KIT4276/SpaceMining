@@ -25,7 +25,7 @@ public class DroneMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_droneStateMachine.ActiveState == DroneState.FollowingState)
+        if (_droneStateMachine.ActiveState == DroneState.Following)
         {
             if (NearestResource == null || !NearestResource.gameObject.activeInHierarchy)
             {
@@ -43,7 +43,7 @@ public class DroneMovement : MonoBehaviour
 
     private void OnResourcesSpawned(Resource resource)
     {
-        if (_droneStateMachine.ActiveState != DroneState.StartState || !this.gameObject.activeInHierarchy) return;
+        if (_droneStateMachine.ActiveState != DroneState.Start || !this.gameObject.activeInHierarchy) return;
 
         if (NearestResource == null)
         {
@@ -54,17 +54,17 @@ public class DroneMovement : MonoBehaviour
             SelectNearest(resource);
         }
         _navMeshAgent.SetDestination(NearestResource.transform.position);
-        _droneStateMachine.ChangeState(DroneState.FollowingState);
+        _droneStateMachine.ChangeState(DroneState.Following);
     }
 
     private void OnStateChanged(DroneState state)
     {
         switch (state)
         {
-            case DroneState.ReturnState:
+            case DroneState.Return:
                 _navMeshAgent.SetDestination(_base.transform.position);
                 break;
-            case DroneState.FollowingState:
+            case DroneState.Following:
                 FindNewDestination();
                 break;
 

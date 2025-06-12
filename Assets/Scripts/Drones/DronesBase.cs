@@ -17,7 +17,7 @@ public class DronesBase : MonoBehaviour
             if (i < count)
             {
                 _drones[i].gameObject.SetActive(true);
-                if (_drones[i].DroneStateMachine.ActiveState != DroneState.StartState)
+                if (_drones[i].DroneStateMachine.ActiveState != DroneState.Start)
                 {
                     _drones[i].DroneMovement.FindNewDestination();
                 }
