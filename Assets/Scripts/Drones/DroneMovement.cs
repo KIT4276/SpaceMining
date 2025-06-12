@@ -43,7 +43,7 @@ public class DroneMovement : MonoBehaviour
 
     private void OnResourcesSpawned(Resource resource)
     {
-        if (_droneStateMachine.ActiveState != DroneState.StartState) return;
+        if (_droneStateMachine.ActiveState != DroneState.StartState || !this.gameObject.activeInHierarchy) return;
 
         if (NearestResource == null)
         {

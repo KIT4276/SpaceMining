@@ -23,7 +23,6 @@ public class DroneInstaller : MonoBehaviour
         NavMeshAgent = GetComponent<NavMeshAgent>();
 
         DroneStateMachine = new DroneStateMachine();
-
     }
 
     private void Start()
