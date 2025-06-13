@@ -27,7 +27,7 @@ public class AllDronesClichHandler : MonoBehaviour
             if (drone != droneInstaller.DronClichHandler)
             {
                 drone.Deactivate();
-                if (SelectedDron = drone.DroneInstaller)
+                if (SelectedDron == drone.DroneInstaller)
                 {
                     SelectedDron = null;
                 }

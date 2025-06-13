@@ -23,7 +23,7 @@ public class DronesStateUI : MonoBehaviour
         else if (!_selectedDron.gameObject.activeInHierarchy)
         {
             CleanText();
-            _dronesClichHandler.Click -= OnClick;
+            
             _selectedDron = null;
         }
     }
@@ -68,9 +68,6 @@ public class DronesStateUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_selectedDron != null)
-        {
-            _dronesClichHandler.Click -= OnClick;
-        }
+        _dronesClichHandler.Click -= OnClick;
     }
 }
