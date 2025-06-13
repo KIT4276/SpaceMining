@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,8 @@ public class DroneInstaller : MonoBehaviour
 
     public ResourcesFactory ResourcesFactory { get => _resourcesFactory; }
     public DronesBase DroneBase { get => _droneBase; }
+
+    public event Action Initialized;
 
     private void Awake()
     {
@@ -34,5 +37,6 @@ public class DroneInstaller : MonoBehaviour
     {
         DroneMovement.Initialize(NavMeshAgent, DroneBase, DroneStateMachine, ResourcesFactory);
         DroneMining.Initialize(DroneStateMachine, DroneMovement, DroneBase);
+        Initialized?.Invoke();
     }
 }

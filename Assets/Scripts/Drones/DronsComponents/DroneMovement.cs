@@ -1,20 +1,29 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class DroneMovement : MonoBehaviour
 {
-   private NavMeshAgent _navMeshAgent;
-   private DronesBase _base;
-   private DroneStateMachine _droneStateMachine;
-  private ResourcesFactory _resourcesFactory;
+    private NavMeshAgent _navMeshAgent;
+    private DronesBase _base;
+    private DroneStateMachine _droneStateMachine;
+    private ResourcesFactory _resourcesFactory;
+    private Vector3 _startPosition;
 
     public Resource NearestResource { get; private set; }
 
-    public void Initialize(NavMeshAgent navMeshAgent, DronesBase droneBase, DroneStateMachine droneStateMachine, 
+    private void Start()
+    {
+        _startPosition = transform.position;
+    }
+
+    public void Initialize(NavMeshAgent navMeshAgent, DronesBase droneBase, DroneStateMachine droneStateMachine,
         ResourcesFactory resourcesFactory)
     {
         _navMeshAgent = navMeshAgent;
+        
         _base = droneBase;
         _droneStateMachine = droneStateMachine;
         _resourcesFactory = resourcesFactory;
@@ -36,9 +45,17 @@ public class DroneMovement : MonoBehaviour
         }
     }
 
+    public void StartPosition()
+    {
+        transform.position = _startPosition;
+    }
+
     public void StopMove()
     {
-        _navMeshAgent.ResetPath();
+        if (_navMeshAgent.hasPath)
+        {
+            _navMeshAgent.ResetPath();
+        }
     }
 
     private void OnResourcesSpawned(Resource resource)
@@ -73,9 +90,9 @@ public class DroneMovement : MonoBehaviour
 
     public void FindNewDestination()
     {
-        List< Resource> resources = _resourcesFactory.ActiveResourcesPool;
+        List<Resource> resources = _resourcesFactory.ActiveResourcesPool;
 
-        for (int i = 0; i< resources.Count; i++)
+        for (int i = 0; i < resources.Count; i++)
         {
             if (resources[i] != NearestResource)
             {
@@ -89,7 +106,25 @@ public class DroneMovement : MonoBehaviour
                 }
             }
         }
-        _navMeshAgent.SetDestination(NearestResource.transform.position);
+
+        if (NearestResource != null)
+        {
+            _navMeshAgent.SetDestination(NearestResource.transform.position);
+        }
+        else
+        {
+            StartCoroutine(WaitingForAResource());
+        }
+        
+    }
+
+    private IEnumerator WaitingForAResource()
+    {
+        while(NearestResource == null)
+        {
+            yield return null;
+        }
+        FindNewDestination();
     }
 
     private void SelectNearest(Resource resource)
@@ -101,5 +136,11 @@ public class DroneMovement : MonoBehaviour
         {
             NearestResource = resource;
         }
+    }
+
+    private void OnDestroy()
+    {
+        _resourcesFactory.Spawned -= OnResourcesSpawned;
+        _droneStateMachine.StateChanged -= OnStateChanged;
     }
 }

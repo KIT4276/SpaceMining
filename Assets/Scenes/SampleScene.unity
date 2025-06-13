@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 136941044}
   - component: {fileID: 136941048}
   - component: {fileID: 136941049}
+  - component: {fileID: 136941050}
   m_Layer: 0
   m_Name: RedBase
   m_TagString: Untagged
@@ -277,6 +278,20 @@ MonoBehaviour:
   - {fileID: 1302389843}
   - {fileID: 865216332}
   - {fileID: 1226582190}
+--- !u!114 &136941050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136941043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031d7344ed4da4c41b50c539fc8eec90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dronesBase: {fileID: 136941048}
+  _dronesCount: {fileID: 421692357}
 --- !u!1 &145169846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,6 +1324,7 @@ GameObject:
   - component: {fileID: 721228245}
   - component: {fileID: 721228249}
   - component: {fileID: 721228250}
+  - component: {fileID: 721228251}
   m_Layer: 0
   m_Name: BlueBase
   m_TagString: Untagged
@@ -1442,6 +1458,20 @@ MonoBehaviour:
   - {fileID: 1317367835}
   - {fileID: 749018001}
   - {fileID: 415740140}
+--- !u!114 &721228251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721228243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031d7344ed4da4c41b50c539fc8eec90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dronesBase: {fileID: 721228249}
+  _dronesCount: {fileID: 421692357}
 --- !u!114 &749018001 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2020484744882486376, guid: c245448503319c34ea15e1a403df8a9c, type: 3}

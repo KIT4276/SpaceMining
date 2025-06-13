@@ -9,7 +9,7 @@ public class DronesCount : MonoBehaviour
 
     public event Action <float> ChangeCount;
 
-    private void Start()
+    public void Initialize()
     {
         ChangeCount?.Invoke(_startCount);
         _slider.SetValueWithoutNotify(_startCount);

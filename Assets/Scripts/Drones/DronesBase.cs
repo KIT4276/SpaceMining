@@ -5,6 +5,8 @@ public class DronesBase : MonoBehaviour
     [SerializeField] private DronesCount _dronesCount;
     [SerializeField] private DroneInstaller[] _drones;
 
+    public DroneInstaller[] Drones { get => _drones; }
+
     private void Awake()
     {
         _dronesCount.ChangeCount += OnChangeCount;
@@ -16,14 +18,16 @@ public class DronesBase : MonoBehaviour
         {
             if (i < count)
             {
-                _drones[i].gameObject.SetActive(true);
-                if (_drones[i].DroneStateMachine.ActiveState != DroneState.Start)
+                if (!_drones[i].gameObject.activeInHierarchy)
                 {
-                    _drones[i].DroneMovement.FindNewDestination();
+                    _drones[i].gameObject.SetActive(true);
+                    _drones[i].DroneMovement.StartPosition();
+                    _drones[i].DroneStateMachine.ChangeState(DroneState.Following);
                 }
             }
             else
             {
+                _drones[i].DroneMovement.StopMove();
                 _drones[i].gameObject.SetActive(false);
             }
         }
