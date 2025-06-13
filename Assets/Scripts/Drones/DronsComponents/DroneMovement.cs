@@ -52,7 +52,7 @@ public class DroneMovement : MonoBehaviour
 
     public void StopMove()
     {
-        if (_navMeshAgent.hasPath)
+        if (_navMeshAgent.isOnNavMesh)
         {
             _navMeshAgent.ResetPath();
         }
@@ -83,6 +83,9 @@ public class DroneMovement : MonoBehaviour
                 break;
             case DroneState.Following:
                 FindNewDestination();
+                break;
+            case DroneState.Mining:
+                StopMove();
                 break;
 
         }

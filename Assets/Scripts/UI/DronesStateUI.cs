@@ -1,34 +1,46 @@
-using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DronesStateUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text _name;
     [SerializeField] private TMP_Text _state;
-    [SerializeField] private DronesClichHandler _dronesClichHandler;
+    [SerializeField] private AllDronesClichHandler _dronesClichHandler;
 
-    private DronView _view;
+    private DroneInstaller _selectedDron;
 
     private void Start()
     {
         _dronesClichHandler.Click += OnClick;
     }
 
-    private void OnClick(DronView view)
+    private void Update()
     {
-        if (view.IsSelected)
+        if (_selectedDron == null)
         {
-            _view = view;
-            DroneStateMachine stateMachinne = view.GetComponent<DroneInstaller>().DroneStateMachine;
-            UpdateText(view.gameObject.name, stateMachinne.ActiveState.ToString());
+            CleanText();
+        }
+        else if (!_selectedDron.gameObject.activeInHierarchy)
+        {
+            CleanText();
+            _dronesClichHandler.Click -= OnClick;
+            _selectedDron = null;
+        }
+    }
+
+    private void OnClick(DroneInstaller dron)
+    {
+        if (dron.DronClichHandler.IsSelected)
+        {
+            _selectedDron = dron;
+            DroneStateMachine stateMachinne = dron.GetComponent<DroneInstaller>().DroneStateMachine;
+            UpdateText(dron.gameObject.name, stateMachinne.ActiveState.ToString());
 
             stateMachinne.StateChanged += UpdateState;
         }
         else
         {
-            _view = null;
+            _selectedDron = null;
             _name.text = string.Empty;
             _state.text = string.Empty;
         }
@@ -36,7 +48,10 @@ public class DronesStateUI : MonoBehaviour
 
     private void UpdateState(DroneState state)
     {
-        UpdateText(_view.gameObject.name, state.ToString());// как теперь отписаться?..
+        if (_selectedDron != null)
+        {
+            UpdateText(_selectedDron.gameObject.name, state.ToString());
+        }
     }
 
     private void UpdateText(string name, string state)
@@ -45,8 +60,17 @@ public class DronesStateUI : MonoBehaviour
         _state.text = state;
     }
 
+    private void CleanText()
+    {
+        _name.text = string.Empty;
+        _state.text = string.Empty;
+    }
+
     private void OnDestroy()
     {
-        _dronesClichHandler.Click -= OnClick;
+        if (_selectedDron != null)
+        {
+            _dronesClichHandler.Click -= OnClick;
+        }
     }
 }

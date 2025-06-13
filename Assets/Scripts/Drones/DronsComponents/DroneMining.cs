@@ -31,7 +31,7 @@ public class DroneMining : MonoBehaviour
             case DroneState.Following:
                 if (other.TryGetComponent<Resource>(out var resource) && resource == _droneMovement.NearestResource)
                 {
-                    _droneStateMachine.ChangeState(DroneState.Mining);
+                    //_droneStateMachine.ChangeState(DroneState.Mining);
                     _resource = resource;
                     _miningCoroutine = StartCoroutine(MiningRoutine());
                 }

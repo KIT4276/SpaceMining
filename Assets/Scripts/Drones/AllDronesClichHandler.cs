@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-public class DronesClichHandler : MonoBehaviour
+public class AllDronesClichHandler : MonoBehaviour
 {
-    [SerializeField] private DronView[] _drones;
+    [SerializeField] private DronClichHandler[] _drones;
 
-    public event Action<DronView> Click;
+    public event Action<DroneInstaller> Click;
 
-    public DronView SelectedDron {  get; private set; } 
+    public DroneInstaller SelectedDron {  get; private set; } 
 
     private void Start()
     {
@@ -17,17 +17,17 @@ public class DronesClichHandler : MonoBehaviour
         }
     }
 
-    private void OnClick(DronView view)
+    private void OnClick(DroneInstaller droneInstaller)
     {
-        SelectedDron = view;
+        SelectedDron = droneInstaller;
 
-        Click?.Invoke(view);
+        Click?.Invoke(droneInstaller);
         foreach (var drone in _drones)
         {
-            if (drone != view)
+            if (drone != droneInstaller.DronClichHandler)
             {
                 drone.Deactivate();
-                if (SelectedDron = drone)
+                if (SelectedDron = drone.DroneInstaller)
                 {
                     SelectedDron = null;
                 }

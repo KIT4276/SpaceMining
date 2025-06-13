@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(DroneMovement), typeof(DroneMining), typeof(NavMeshAgent))]
-[RequireComponent( typeof(Rigidbody), typeof(Collider))]
+[RequireComponent( typeof(Rigidbody), typeof(Collider), typeof (DronClichHandler))]
+[RequireComponent(typeof(DronView))]
 public class DroneInstaller : MonoBehaviour
 {
     [SerializeField] private ResourcesFactory _resourcesFactory;
@@ -13,6 +14,8 @@ public class DroneInstaller : MonoBehaviour
     public DroneMining DroneMining { get; private set; }
     public DroneStateMachine DroneStateMachine { get; private set; }
     public NavMeshAgent NavMeshAgent { get; private set; }
+    public DronClichHandler DronClichHandler { get; private set; }
+    public DronView DronView { get; private set; }
 
     public ResourcesFactory ResourcesFactory { get => _resourcesFactory; }
     public DronesBase DroneBase { get => _droneBase; }
@@ -24,8 +27,10 @@ public class DroneInstaller : MonoBehaviour
         DroneMovement = GetComponent<DroneMovement>();
         DroneMining = GetComponent<DroneMining>();
         NavMeshAgent = GetComponent<NavMeshAgent>();
+        DronClichHandler = GetComponent<DronClichHandler>();
+        DronView = GetComponent<DronView>();
 
-        DroneStateMachine = new DroneStateMachine();
+        DroneStateMachine = new DroneStateMachine(this.name);
     }
 
     private void Start()
@@ -37,6 +42,7 @@ public class DroneInstaller : MonoBehaviour
     {
         DroneMovement.Initialize(NavMeshAgent, DroneBase, DroneStateMachine, ResourcesFactory);
         DroneMining.Initialize(DroneStateMachine, DroneMovement, DroneBase);
+        DronClichHandler.Initialize(DronView,this);
         Initialized?.Invoke();
     }
 }

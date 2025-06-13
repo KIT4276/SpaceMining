@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7180923939575428143}
   - component: {fileID: 2541008534544333855}
   - component: {fileID: 2020484744882486376}
+  - component: {fileID: 9062724209110178891}
   m_Layer: 0
   m_Name: BlueDrone
   m_TagString: Untagged
@@ -178,6 +179,19 @@ MonoBehaviour:
   - {fileID: 6291667088941650462}
   _normMaterial: {fileID: 2100000, guid: 1029bf48b58244142a57029b0b323c23, type: 2}
   _selectedMaterial: {fileID: 2100000, guid: a87f74b1b2bab5f4d8682da740e2c4db, type: 2}
+  _selectedScale: 1.2
+--- !u!114 &9062724209110178891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5166680005620021794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746661266bdcc6c488c6cc8fb906f86e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6310879741272787070
 GameObject:
   m_ObjectHideFlags: 0
